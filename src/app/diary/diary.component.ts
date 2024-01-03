@@ -5,7 +5,9 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <h1>Diary Page</h1>
+    <div data-theme="cupcake" class="flex justify-center items-center h-full">
+      <h1>Diary Page</h1>
+    </div>
   `,
   styleUrl: './diary.component.scss'
 })
