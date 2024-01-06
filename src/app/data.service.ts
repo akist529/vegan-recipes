@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ export class DataService {
   }
 
   async getRecipes (query: string): Promise<any> {
-    const data = await fetch(`${this.ROOT_URL}/recipes?query=tofu`, {
+    const data = await fetch(`${this.ROOT_URL}/recipes?query=${query}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
