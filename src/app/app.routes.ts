@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DiaryComponent } from './diary/diary.component';
-import { FoodsComponent } from './foods/foods.component';
+import { IngredientsComponent } from './ingredients/ingredients.component';
+import { RecipesComponent } from './recipes/recipes.component';
 
 export const routes: Routes = [
     {
@@ -10,13 +10,13 @@ export const routes: Routes = [
         title: 'Dashboard Page'
     },
     {
-        path: 'diary',
-        component: DiaryComponent,
-        title: 'Diary Page'
+        path: 'ingredients',
+        component: IngredientsComponent,
+        title: 'Ingredients Page'
     },
     {
-        path: 'foods',
-        component: FoodsComponent,
-        title: 'Foods Page'
+        path: 'recipes',
+        component: RecipesComponent,
+        title: 'Recipes Page'
     }
 ];
