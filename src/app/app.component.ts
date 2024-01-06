@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterModule } from '@angular/router';
 // COMPONENTS
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DiaryComponent } from './diary/diary.component';
-import { FoodsComponent } from './foods/foods.component';
+import { IngredientsComponent } from './ingredients/ingredients.component';
+import { RecipesComponent } from './recipes/recipes.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 @Component({
@@ -15,8 +15,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     RouterOutlet, 
     RouterModule, 
     DashboardComponent, 
-    DiaryComponent, 
-    FoodsComponent, 
+    IngredientsComponent, 
+    RecipesComponent, 
     NavbarComponent
   ],
   templateUrl: './app.component.html',
@@ -24,5 +24,5 @@ import { NavbarComponent } from './navbar/navbar.component';
 })
 
 export class AppComponent {
-  title = 'food-tracker';
+  title = 'vegan-recipes';
 }

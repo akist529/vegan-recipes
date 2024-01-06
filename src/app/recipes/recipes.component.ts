@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-foods',
+  selector: 'app-recipes',
   standalone: true,
   imports: [],
   template: `
     <div data-theme="cupcake" class="flex justify-center items-center h-full">
-      <h1>Foods Page</h1>
+      <h1>Recipes Page</h1>
     </div>
   `,
-  styleUrl: './foods.component.scss'
+  styleUrl: './recipes.component.scss'
 })
 
-export class FoodsComponent {
+export class RecipesComponent {
 
 }

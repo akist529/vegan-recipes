@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
-import { tablerDashboard, tablerNotebook, tablerMeat, tablerMoon, tablerMenu2 } from '@ng-icons/tabler-icons';
+import { tablerDashboard, tablerApple, tablerChefHat, tablerMoon, tablerMenu2 } from '@ng-icons/tabler-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +10,10 @@ import { tablerDashboard, tablerNotebook, tablerMeat, tablerMoon, tablerMenu2 } 
     RouterModule, 
     NgIconComponent, 
   ],
-  viewProviders: [provideIcons({ tablerDashboard, tablerNotebook, tablerMeat, tablerMoon, tablerMenu2 })], 
+  viewProviders: [provideIcons({ tablerDashboard, tablerApple, tablerChefHat, tablerMoon, tablerMenu2 })], 
   template: `
     <nav class="navbar flex gap-3 justify-center items-center px-2 sm:px-12 md:px-24" data-theme="coffee" (window:resize)="onResize()">
-      <h1 class="flex-initial">Food Tracker</h1>
+      <h1 class="flex-initial">Vegan Recipes</h1>
       @if (width < 380) {
         <details class="dropdown">
           <summary class="btn btn-ghost flex-1 justify-center">
@@ -37,26 +37,26 @@ import { tablerDashboard, tablerNotebook, tablerMeat, tablerMoon, tablerMenu2 } 
             </li>
             <li>
               <a
-                [routerLink]="['/diary']"
+                [routerLink]="['/ingredients']"
                 class="btn btn-sm btn-ghost"
               >
                 <ng-icon
-                  name="tablerNotebook"
+                  name="tablerApple"
                   [size]="width < 480 ? '24' : '32'"
                 ></ng-icon>
-                Diary
+                Ingredients
               </a>
             </li>
             <li>
               <a
-                [routerLink]="['/foods']"
+                [routerLink]="['/recipes']"
                 class="btn btn-sm btn-ghost"
               >
                 <ng-icon
-                  name="tablerMeat"
+                  name="tablerChefHat"
                   [size]="width < 480 ? '24' : '32'"
                 ></ng-icon>
-                Foods
+                Recipes
               </a>
             </li>
           </ul>
@@ -78,26 +78,26 @@ import { tablerDashboard, tablerNotebook, tablerMeat, tablerMoon, tablerMenu2 } 
           </li>
           <li class="px-2">
             <a
-              [routerLink]="['/diary']"
+              [routerLink]="['/ingredients']"
               class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-ghost"
             >
               <ng-icon
-                name="tablerNotebook"
+                name="tablerApple"
                 [size]="width < 480 ? '24' : '32'"
               ></ng-icon>
-              Diary
+              Ingredients
             </a>
           </li>
           <li class="px-2">
             <a
-              [routerLink]="['/foods']"
+              [routerLink]="['/recipes']"
               class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg btn-ghost"
             >
               <ng-icon
-                name="tablerMeat"
+                name="tablerChefHat"
                 [size]="width < 480 ? '24' : '32'"
               ></ng-icon>
-              Foods
+              Recipes
             </a>
           </li>
         </ul>

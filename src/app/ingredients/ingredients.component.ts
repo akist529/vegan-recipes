@@ -4,7 +4,7 @@ import { tablerMeat, tablerWeight } from '@ng-icons/tabler-icons';
 import { ionBody } from '@ng-icons/ionicons';
 
 @Component({
-  selector: 'app-diary',
+  selector: 'app-ingredients',
   standalone: true,
   imports: [
     NgIconComponent, 
@@ -47,12 +47,22 @@ import { ionBody } from '@ng-icons/ionicons';
           Weight
         </a>
       </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Food</th>
+            <th>Nutrients</th>
+          </tr>
+        </thead>
+      </table>
     </div>
   `,
-  styleUrl: './diary.component.scss'
+  styleUrl: './ingredients.component.scss'
 })
 
-export class DiaryComponent {
+export class IngredientsComponent {
   activeTab = 0;
   tabClasses = 'tab pt-3';
   activeTabClass = 'tab-active';
