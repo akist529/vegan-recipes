@@ -30,7 +30,7 @@ import { DataService } from '../data.service';
       </div>
       <div class="join">
         <button
-          *ngFor="let page of range(pages)"
+          *ngFor="let page of pageRange()"
           class="join-item btn"
           (click)="updatePage(page)"
         >{{ page }}</button>
@@ -58,10 +58,12 @@ import { DataService } from '../data.service';
 export class RecipesComponent {
   dataService: any = inject(DataService);
 
-  recipes: any = JSON.parse(sessionStorage.getItem('recipes') || '[]') ?? [];
-  pages: number = JSON.parse(sessionStorage.getItem('recipes') || '[]').length ?? 0;
-  currentPage = 1;
   count = 8;
+  currentPage = 1;
+
+  recipes: any = JSON.parse(sessionStorage.getItem('recipes') || '[]') ?? [];
+  pages: number = Math.ceil(this.recipes.length / this.count) ?? 0;
+
 
   constructor () { }
 
@@ -72,6 +74,7 @@ export class RecipesComponent {
     this.dataService.getRecipes(query).then((data: any) => {
       sessionStorage.setItem('recipes', JSON.stringify(data['recipes']));
       this.recipes = data['recipes'];
+      this.pages = Math.ceil(this.recipes.length / this.count);
     })
   }
 
@@ -79,16 +82,12 @@ export class RecipesComponent {
     this.currentPage = page;
   }
 
-  range (num: number) {
+  pageRange () {
     let arr: number[] = [];
-    let index = 1;
-    let recipeCount = 0;
 
-    do {
-      arr.push(index);
-      index++;
-      recipeCount += this.count;
-    } while (recipeCount < num);
+    for (let i = 1; i <= this.pages; i++) {
+      arr.push(i)
+    }
 
     return arr;
   }
