@@ -45,7 +45,7 @@ import { DataService } from '../data.service';
               <h2>{{ recipe["recipe"]["label"] }}</h2>
             </div>
             <div class="card-actions justify-end">
-              <button class="btn btn-primary">See Recipe</button>
+              <a class="btn btn-primary" [href]="recipe['recipe']['url']" target="_blank">See Recipe</a>
             </div>
           </div>
         </li>
