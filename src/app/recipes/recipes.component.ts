@@ -30,14 +30,14 @@ import { DataService } from '../data.service';
       </div>
       <div class="join">
         <button
-          *ngFor="let page of pages"
+          *ngFor="let page of range(pages)"
           class="join-item btn"
-          (click)="updatePage(page + 1)"
-        >{{ page + 1 }}</button>
+          (click)="updatePage(page)"
+        >{{ page }}</button>
       </div>
       <ul class="grid grid-cols-4 gap-4">
-        <li *ngFor="let recipe of recipes">
-          <div class="card w-96 bg-base-100 shadow-xl">
+        <li *ngFor="let recipe of recipes.slice((currentPage - 1) * count, currentPage * count)">
+          <div class="card w-96 bg-base-100 shadow-xl p-5">
             <figure>
               <img [src]="recipe['recipe']['image']" alt="Recipe"/>
             </figure>
@@ -56,11 +56,12 @@ import { DataService } from '../data.service';
 })
 
 export class RecipesComponent {
-  recipes: any = []
-  pages = new Array(Math.ceil(this.recipes.length / 8)).fill(true).map((x, i) => i)
-  dataService: any = inject(DataService)
-  currentPage = 1
-  count = 8
+  dataService: any = inject(DataService);
+
+  recipes: any = JSON.parse(sessionStorage.getItem('recipes') || '[]') ?? [];
+  pages: number = JSON.parse(sessionStorage.getItem('recipes') || '[]').length ?? 0;
+  currentPage = 1;
+  count = 8;
 
   constructor () { }
 
@@ -68,15 +69,27 @@ export class RecipesComponent {
     const input = document.getElementById('query') as HTMLInputElement;
     const query = input.value;
 
-    this.dataService.getRecipes(query, this.currentPage, this.count).then((data: any) => {
+    this.dataService.getRecipes(query).then((data: any) => {
+      sessionStorage.setItem('recipes', JSON.stringify(data['recipes']));
       this.recipes = data['recipes'];
-      console.log(data['recipes'].length)
-      this.pages = new Array(Math.ceil(data['count'] / 8)).fill(true).map((x, i) => i);
     })
   }
 
   updatePage (page: number) {
     this.currentPage = page;
-    this.getData();
+  }
+
+  range (num: number) {
+    let arr: number[] = [];
+    let index = 1;
+    let recipeCount = 0;
+
+    do {
+      arr.push(index);
+      index++;
+      recipeCount += this.count;
+    } while (recipeCount < num);
+
+    return arr;
   }
 }
