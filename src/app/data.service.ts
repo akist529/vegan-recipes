@@ -14,7 +14,7 @@ export class DataService {
   }
 
   async getRecipes (query: string, page: number, count: number): Promise<any> {
-    const data = await fetch(`${this.ROOT_URL}/recipes?query=${query}&page=${page}&count=${count}`, {
+    const data = await fetch(`${this.ROOT_URL}/recipes/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -22,6 +22,6 @@ export class DataService {
       }
     });
 
-    return await data.json() ?? [];
+    return data.json() ?? [];
   } 
 }
