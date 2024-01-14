@@ -38,6 +38,7 @@ interface Recipe {
         <button
           type="button"
           class="btn btn-ghost"
+          (click)="searchRecipes()"
         >SUBMIT</button>
       </div>
       <div class="join">
@@ -178,5 +179,28 @@ export class RecipesComponent implements OnInit {
     } else {
       this.buttonsPerPage = 1;
     }
+  }
+
+  searchRecipes () {
+    const query = (document.getElementById('query') as HTMLInputElement).value;
+
+    this.dataService.getRecipes(query).then((data: Recipe[]) => {
+      this.recipes = data;
+      this.pages = Math.ceil(data.length / this.recipesPerPage);
+      this.pageArrOne = [];
+      this.pageArrTwo = [];
+
+      for (let i = 1; i <= 5; i++) {
+        if (this.pages > i) {
+          this.pageArrOne.push(i)
+        }
+      }
+
+      for (let i = this.pages - 4; i <= this.pages; i++) {
+        if (i > 0) {
+          this.pageArrTwo.push(i)
+        }
+      }
+    });
   }
 }
